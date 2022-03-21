@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  absguideapp-deployment
+  namespace: default
+  labels:
+    app:  absguideapp
+spec:
+  selector:
+    matchLabels:
+      app: absguideapp
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app:  absguideapp
+    spec:
+      containers:
+      - name:  absguideapp
+        image:  idla/absguide:latest
+        ports:
+        - containerPort:  80
